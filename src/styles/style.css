@@ -125,8 +125,8 @@ body {
 .cart__entry__info p {
   font-size: 1.4vw;
   font-weight: 300;
-  padding: 1.5vw 1.5vw 0 1.8vw;
-  margin-top: 1.2vh;
+  padding: 1vw 1.5vw 0 1.8vw;
+  margin-top: .8vh;
   margin-right: .8vw;
   margin-bottom: 1.5vh;
   overflow-y: scroll;

@@ -5,6 +5,8 @@ import Fade from 'react-reveal/Fade'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Cart } from '../Cart'
+import Skeleton from 'react-loading-skeleton'
+
 
 const Home = (props) => {
 
@@ -12,6 +14,7 @@ const Home = (props) => {
   const [fetchError, setFetchError] = useState(false)
   const trash = <FontAwesomeIcon icon={faTrash} size="2x" />
   const { cartTotal, setCartTotal } = useContext(Cart)
+  const [skeletonLoad, setSkeletonLoad] = useState(true)
 
   useEffect(() => {
 
@@ -38,6 +41,12 @@ const Home = (props) => {
     }
 
   }, [hotels])
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSkeletonLoad(false)
+    }, 2500)
+  }, [])
 
   function handleNights(event) {
 
@@ -101,7 +110,9 @@ const Home = (props) => {
       {hotels.map((hotel, index) => {
 
         return <Fade key={index}>
-          <div className="cart__entry" key={index}>
+
+          {skeletonLoad ? <Skeleton height={'30vh'} width={'64vw'} /> : <div className="cart__entry" key={index}>
+
             <div className="cart__entry__img">
               <img src={hotel.img} alt={hotel.name}></img>
             </div>
@@ -134,7 +145,7 @@ const Home = (props) => {
 
             </div>
 
-          </div>
+          </div>}
 
         </Fade>
 

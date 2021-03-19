@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Slide from 'react-reveal/Slide'
 import Fade from 'react-reveal/Fade'
-
-
 import { Cart } from '../Cart'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUndo, faUndoAlt } from '@fortawesome/free-solid-svg-icons'
@@ -42,6 +40,9 @@ const Payment = (props) => {
     re.test(email) ? setValidEmail('') : setValidEmail('(*) Invalid Email')
 
     if (name.length >= 3 && re.test(email)) setValidSubmit(true)
+    else {
+      setValidSubmit(false)
+    }
 
   }, [name, number, email, address])
 
