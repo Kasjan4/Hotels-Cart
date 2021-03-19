@@ -17,7 +17,7 @@ const App = () => {
 
     <Cart.Provider value={{ cartTotal, setCartTotal }}>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/Hotels-Cart" component={Home} />
         <Route exact path="/payment" component={Payment} />
       </Switch>
     </Cart.Provider>
