@@ -1,32 +1,12 @@
-# CryptoX
+# Hotels Cart
 
 ## Overview
 
-A crypto tracker built with React, Node, Express and MongoDB. Track your favourite crypto by making an account. Mobile responsive.
+1. Clone repo
+2. Run 'npm i' in terminal to install node modules
+3. Run 'npm run frontend' to run the app
 
-[CHECK IT OUT HERE](https://cryptox-project.herokuapp.com/)
+[LIVE LINK](https://kasjanhinc.github.io/Hotels-Cart/)
 
-![CryptoX](./screenshots/home.png)
 
-**Technologies used:**
 
-- HTML5
-- CSS3
-- JavaScript ES6
-- React Hooks
-- React Router
-- React Reveal
-- Bootstrap framework
-- Particles js
-- Express
-- Mongoose
-- MongoDB
-- Font Awesome
-- Git
-- GitHub
-- npm
-- Webpack
-- Babel
-- Node
-- Pixlr editor
-- Google Fonts
