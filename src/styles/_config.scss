@@ -1,10 +1,12 @@
-$primary-color: black;
-$secondary-color: #ff652f;
+$primary-color: rgb(122, 122, 122);
+$secondary-color: rgb(46, 46, 46);
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Lato', sans-serif;
+
 }
 
 h1,

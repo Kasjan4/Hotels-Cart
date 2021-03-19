@@ -2,8 +2,6 @@ import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Fade from 'react-reveal/Fade'
-
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Cart } from '../Cart'
@@ -14,8 +12,6 @@ const Home = (props) => {
   const [fetchError, setFetchError] = useState(false)
   const trash = <FontAwesomeIcon icon={faTrash} size="2x" />
   const { cartTotal, setCartTotal } = useContext(Cart)
-
-
 
   useEffect(() => {
 
@@ -43,8 +39,6 @@ const Home = (props) => {
 
   }, [hotels])
 
-
-
   function handleNights(event) {
 
     const id = event.target.value
@@ -52,7 +46,6 @@ const Home = (props) => {
     let updatedHotels = [...hotels]
 
     if (event.target.name.length > 6) {
-
       for (let i = 0; i < updatedHotels.length; i++) {
         if (updatedHotels[i].id == event.target.name) {
           updatedHotels[i].nights = Number(event.target.value)
@@ -62,7 +55,6 @@ const Home = (props) => {
     }
 
     else if (event.target.name === 'add') {
-
       for (let i = 0; i < updatedHotels.length; i++) {
 
         if (updatedHotels[i].id == id) {
@@ -73,7 +65,6 @@ const Home = (props) => {
       }
     }
     else if (event.target.name === 'remove') {
-
       for (let i = 0; i < updatedHotels.length; i++) {
         if (updatedHotels[i].id == id) {
           if (updatedHotels[i].nights == 0) return
@@ -93,12 +84,7 @@ const Home = (props) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
-  function scrollToTop() {
-    window.scrollTo(0, 0)
-  }
 
-
-  console.log(cartTotal)
   return <div className="home">
 
     {fetchError && <div className="error-screen">
@@ -107,7 +93,10 @@ const Home = (props) => {
 
     {hotels.length > 0 && <div className="cart">
 
-      <h1>Cart</h1>
+      <Fade>
+        <h1>Cart</h1>
+      </Fade>
+
 
       {hotels.map((hotel, index) => {
 
@@ -126,7 +115,7 @@ const Home = (props) => {
 
               <div className="cart__entry__manage__nights" >
                 <div>
-                  <button value={hotel.id} name="Remove one night" disabled={hotel.nights == 0 ? true : false} onClick={handleNights}>-</button>
+                  <button value={hotel.id} name="remove" disabled={hotel.nights == 0 ? true : false} onClick={handleNights}>-</button>
 
                   <select value={hotel.nights} name={hotel.id} onChange={handleNights}>
                     {Array.from(Array(15), (e, i) => {
@@ -134,7 +123,7 @@ const Home = (props) => {
                     })}
                   </select>
 
-                  <button value={hotel.id} name="Add one night" onClick={handleNights} disabled={hotel.nights == 14 ? true : false} >+</button>
+                  <button value={hotel.id} name="add" onClick={handleNights} disabled={hotel.nights == 14 ? true : false} >+</button>
                 </div>
               </div>
 
@@ -146,19 +135,8 @@ const Home = (props) => {
             </div>
 
           </div>
+
         </Fade>
-
-
-
-
-
-
-
-
-
-
-
-
 
       })}
 
@@ -167,16 +145,14 @@ const Home = (props) => {
 
           <h2><span>$</span>{String(cartTotal)}</h2>
           <Link to="/payment">CHECKOUT</Link>
+
         </div>
       </div>
-
-
 
     </div>
     }
 
   </div >
-
 
 }
 
