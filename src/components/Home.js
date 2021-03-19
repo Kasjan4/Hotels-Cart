@@ -8,16 +8,21 @@ import { Cart } from '../Cart'
 import Skeleton from 'react-loading-skeleton'
 
 
-const Home = (props) => {
+const Home = () => {
 
+  // hotels from api
   const [hotels, setHotels] = useState([])
+  // axios on error handler
   const [fetchError, setFetchError] = useState(false)
-  const trash = <FontAwesomeIcon icon={faTrash} size="2x" />
+
+  // global context storage of cart total value
   const { cartTotal, setCartTotal } = useContext(Cart)
+  // skeleton loader
   const [skeletonLoad, setSkeletonLoad] = useState(true)
+  const trash = <FontAwesomeIcon icon={faTrash} size="2x" />
 
   useEffect(() => {
-
+    // fetching the hotels
     try {
       axios.get('https://60532e9a45e4b30017291055.mockapi.io/hotels')
         .then((resp) => {
@@ -33,7 +38,7 @@ const Home = (props) => {
   }, [])
 
   useEffect(() => {
-
+    // recalculate the total sum after every change of hotels state
     let updatedSum = 0
     for (let i = 0; i < hotels.length; i++) {
       updatedSum += hotels[i].nights * hotels[i].price
@@ -43,13 +48,14 @@ const Home = (props) => {
   }, [hotels])
 
   useEffect(() => {
+    // skeleton loader timeout on initial render
     setTimeout(() => {
       setSkeletonLoad(false)
     }, 2500)
   }, [])
 
   function handleNights(event) {
-
+    // handle both the select and add/remove buttons
     const id = event.target.value
 
     let updatedHotels = [...hotels]
@@ -90,6 +96,7 @@ const Home = (props) => {
   }
 
   function numberWithCommas(x) {
+    // commafy prices after each 1000
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
@@ -110,7 +117,7 @@ const Home = (props) => {
       {hotels.map((hotel, index) => {
 
         return <Fade key={index}>
-
+          {/* map out the hotels from state */}
           {skeletonLoad ? <Skeleton height={'30vh'} width={'64vw'} /> : <div className="cart__entry" key={index}>
 
             <div className="cart__entry__img">

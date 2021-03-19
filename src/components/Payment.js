@@ -4,25 +4,28 @@ import Slide from 'react-reveal/Slide'
 import Fade from 'react-reveal/Fade'
 import { Cart } from '../Cart'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUndo, faUndoAlt } from '@fortawesome/free-solid-svg-icons'
+import { faUndoAlt } from '@fortawesome/free-solid-svg-icons'
 
-const Payment = (props) => {
+const Payment = () => {
 
   const home = <FontAwesomeIcon icon={faUndoAlt} size="2x" />
   const [firstRender, setFirstRender] = useState(true)
   const { cartTotal, setCartTotal } = useContext(Cart)
 
+  // current input values
   const [name, setName] = useState('')
   const [number, setNumber] = useState('')
   const [address, setAddress] = useState('')
   const [email, setEmail] = useState('')
 
+  // current input labels
   const [validName, setValidName] = useState('')
   const [validNumber, setValidNumber] = useState('')
   const [validAddress, setValidAddress] = useState('')
   const [validEmail, setValidEmail] = useState('')
   const [validSubmit, setValidSubmit] = useState(false)
 
+  // scroll to top on initial render
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [])
@@ -32,7 +35,7 @@ const Payment = (props) => {
     if (firstRender) {
       return setFirstRender(false)
     }
-
+    // validate the inputs, check for correct lengths
     name.length >= 3 ? setValidName('') : setValidName('(*) Minimum length: 3 characters')
     address.length > 0 ? setValidAddress('') : setValidAddress('(*)')
     number.length >= 9 ? setValidNumber('') : setValidNumber('9 digit format')
