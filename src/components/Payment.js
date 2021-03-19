@@ -15,7 +15,7 @@ const Payment = (props) => {
 
   const [name, setName] = useState('')
   const [number, setNumber] = useState('')
-  const [address, setAdrress] = useState('')
+  const [address, setAddress] = useState('')
   const [email, setEmail] = useState('')
 
   const [validName, setValidName] = useState('')
@@ -31,17 +31,17 @@ const Payment = (props) => {
 
   useEffect(() => {
 
-
-    const x = name.length >= 3 ? setValidName('') : setValidName('Minimum length: 3 characters')
-    const y = number.length < 9 ? setValidNumber('Minimum length: 9 digits') : setValidNumber('')
+    name.length >= 3 ? setValidName('') : setValidName('(*) Minimum length: 3 characters')
+    address.length > 0 ? setValidAddress('') : setValidAddress('(*)')
+    number.length == 9 ? setValidNumber('') : setValidNumber('Minimum length: 9 digits')
     const re = /\S+@\S+\.\S+/
-    const z = re.test(email) ? setValidEmail('') : setValidEmail('Invalid Email')
+    re.test(email) ? setValidEmail('') : setValidEmail('(*) Invalid Email')
 
-    if (x && y && z) setValidSubmit(true)
+    if (name.length >= 3 && re.test(email)) setValidSubmit(true)
 
-  }, [name, number, email])
+  }, [name, number, email, address])
 
-
+  console.log(validSubmit)
   return <div className="home">
 
 
@@ -51,31 +51,33 @@ const Payment = (props) => {
 
       <form>
 
-        <Slide left delay={200}>
+        <Slide left>
           <label htmlFor="name">{validName}</label>
           <input onChange={(event) => setName(event.target.value)} value={name} type="text" minLength="3" placeholder="John Kowalsky" name="name" required></input>
         </Slide>
 
-        <Slide right delay={200}>
+        <Slide right>
           <label htmlFor="address">{validAddress}</label>
           <input onChange={(event) => setAddress(event.target.value)} value={address} type="text" placeholder="Address" name="address" required></input>
         </Slide>
 
-        <Slide left delay={200}>
+        <Slide left >
           <label htmlFor="number">{validNumber}</label>
           <input onChange={(event) => setNumber(event.target.value)} value={number} minLength="9" maxLength="9" type="number" name="number" placeholder="+48" ></input>
         </Slide>
 
-        <Slide right delay={200}>
+        <Slide right >
           <label htmlFor="email">{validEmail}</label>
-          <input onChange={(event) => setEmail(event.target.value)} value={email} type="email" name="email" placeholder="example@example.com"></input>
+          <input onChange={(event) => setEmail(event.target.value)} value={email} type="email" name="email" placeholder="example@example.com" required></input>
         </Slide>
 
         <h3><span>$</span>{cartTotal}</h3>
 
-        <Fade delay={200}>
+        <Fade>
           <button disabled={validSubmit ? false : true} type="submit">Submit Payment</button>
         </Fade>
+
+        {!validSubmit && <p>(*) required</p>}
 
       </form>
 

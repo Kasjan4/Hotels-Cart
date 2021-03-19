@@ -80,6 +80,7 @@ body {
 }
 
 .cart h1 {
+  color: #7a7a7a;
   font-size: 4vw;
   margin-bottom: 2vh;
 }
@@ -196,6 +197,7 @@ body {
 }
 
 .cart__entry__manage__price h3 span {
+  color: #7a7a7a;
   font-weight: 400;
 }
 
@@ -242,6 +244,7 @@ body {
 }
 
 .cart__result__total h2 span {
+  color: #7a7a7a;
   font-weight: 400;
 }
 
@@ -295,6 +298,7 @@ form h3 {
 }
 
 form h3 span {
+  color: #7a7a7a;
   font-weight: 400;
 }
 
@@ -311,6 +315,12 @@ form button {
 
 form button:hover {
   background: linear-gradient(165deg, #279b36 0%, #5de24b 100%);
+}
+
+form p {
+  font-size: 1.3vw;
+  font-weight: 300;
+  font-style: italic;
 }
 
 input {
@@ -359,8 +369,11 @@ label {
   .cart__entry__info p {
     font-size: 2vw;
   }
+  .cart__entry__manage__nights {
+    margin-left: 2vw;
+  }
   .cart__entry__manage__nights div {
-    width: 100%;
+    width: 110%;
   }
   .cart__entry__manage__nights div button {
     font-size: 4vw;
