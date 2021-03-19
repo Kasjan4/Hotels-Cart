@@ -1,0 +1,46 @@
+$primary-color: black;
+$secondary-color: #ff652f;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  color: $primary-color;
+}
+
+button {
+  cursor: pointer;
+  -webkit-box-shadow: 0 1px 46px -4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 46px -4px rgba(0, 0, 0, 0.3);
+
+  &:disabled {
+    background: grey;
+    opacity: 0.5;
+
+    &:hover {
+      background: grey;
+      cursor: default;
+    }
+  }
+}
+
+a {
+  -webkit-box-shadow: 0 1px 16px -4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 46px -4px rgba(0, 0, 0, 0.4);
+}
+
+img {
+  margin: 0;
+  padding: 0;
+}
+
+select {
+  -webkit-box-shadow: 0 1px 46px -4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 46px -4px rgba(0, 0, 0, 0.3);
+}
