@@ -24,7 +24,7 @@ const Home = () => {
   useEffect(() => {
     // fetching the hotels
     try {
-      axios.get('https://60532e9a45e4b30017291055.mockapi.io/hotels')
+      axios.get('http://60532e9a45e4b30017291055.mockapi.io/hotels')
         .catch(function (error) {
           if (error.response) {
             console.log(error.response.data)
