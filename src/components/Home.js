@@ -25,13 +25,20 @@ const Home = () => {
     // fetching the hotels
     try {
       axios.get('https://60532e9a45e4b30017291055.mockapi.io/hotels')
+        .catch(function (error) {
+          if (error.response) {
+            console.log(error.response.data)
+            if (error.response.status === 404) {
+              setFetchError(true)
+            }
+          }
+        })
         .then((resp) => {
           const hotels = resp.data
           setHotels(hotels)
         })
 
     } catch (error) {
-      setFetchError(true)
       console.log(error.response)
     }
 
